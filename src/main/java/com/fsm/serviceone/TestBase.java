@@ -12,4 +12,10 @@ import org.springframework.context.annotation.Profile;
 public class TestBase implements CommandLineRunner{
     @Autowired
     private UserRepository userRepository;
+
+    @Override
+    public void run(String... args) throws Exception {
+        // TODO Auto-generated method stub
+        
+    }
 }
