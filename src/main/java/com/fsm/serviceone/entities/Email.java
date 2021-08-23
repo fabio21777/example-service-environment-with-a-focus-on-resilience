@@ -1,20 +1,31 @@
-package com.fsm.serviceone.entites;
+package com.fsm.serviceone.entities;
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
+@Entity
 public class Email implements Serializable {
     private static final long serialVersionUID = 1L;
+    @Id
     private String id;
     private String email;
     private Boolean mainEmail;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
     
     public Email() {
     }
 
-    public Email(String id, String email, Boolean mainEmail) {
+    public Email(String id, String email, Boolean mainEmail,User user) {
         this.id = id;
         this.email = email;
         this.mainEmail = mainEmail;
+        this.user = user;
     }
 
     public String getId() {
@@ -36,8 +47,8 @@ public class Email implements Serializable {
         return mainEmail;
     }
 
-    public void setMainEmail(Boolean mainEmail) {
-        this.mainEmail = mainEmail;
+    public User getUser() {
+        return user;
     }
 
     @Override
