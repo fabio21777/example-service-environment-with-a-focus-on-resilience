@@ -2,26 +2,43 @@ package com.fsm.serviceone.entities;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Range;
+
+
 
 @Entity
-public class Email implements Serializable {
+@Table(name="tb_email")
+public class EmailEntities implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
+    @Email
+    @NotEmpty(message = "Email Required")
+    @Range(
+        min = 10, 
+        max = 100, 
+        message = "size exceeded maximum email size and 100 characters")
     private String email;
     private Boolean mainEmail;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    
-    public Email() {
+
+    public EmailEntities() {
     }
 
-    public Email(String id, String email, Boolean mainEmail,User user) {
+    public EmailEntities(String id, String email, Boolean mainEmail, User user) {
         this.id = id;
         this.email = email;
         this.mainEmail = mainEmail;
@@ -65,7 +82,7 @@ public class Email implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Email other = (Email) obj;
+        EmailEntities other = (EmailEntities) obj;
         if (email == null) {
             if (other.email != null)
                 return false;
@@ -73,6 +90,4 @@ public class Email implements Serializable {
             return false;
         return true;
     }
-    
-
 }

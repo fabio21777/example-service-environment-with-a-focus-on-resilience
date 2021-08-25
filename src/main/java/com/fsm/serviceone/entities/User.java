@@ -5,29 +5,40 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
+
+
 @Entity
+@Table(name = "tb_user")
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
+    @NotEmpty(message = "user name is required")
+    @Size(min = 2, max = 30)
     private String username;
     private String password;
     @JsonIgnore
     @OneToMany(mappedBy = "user")
-    private Set<Email>emails = new HashSet<>();
+    private Set<EmailEntities>emails = new HashSet<>();
     
     public User() {
     }
 
-    public User(String id, String username,String password, Set<Email> emails) {
+    public User(String id, String username,String password) {
         this.id = id;
         this.username = username;
-        this.emails = emails;
         this.password = password;
     }
 
@@ -48,7 +59,7 @@ public class User implements Serializable {
         this.username = username;
     }
 
-    public Set<Email> getEmails() {
+    public Set<EmailEntities> getEmails() {
         return emails;
     }
     
