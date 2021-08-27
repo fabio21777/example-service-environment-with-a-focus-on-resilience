@@ -1,5 +1,8 @@
 package com.fsm.serviceone;
 
+import java.util.Arrays;
+
+import com.fsm.serviceone.entities.EmailEntities;
 import com.fsm.serviceone.entities.User;
 import com.fsm.serviceone.repositories.EmailRepository;
 import com.fsm.serviceone.repositories.UserRepository;
@@ -21,12 +24,10 @@ public class TestBase implements CommandLineRunner{
     @Override
     public void run(String... args) throws Exception {
 
-        User user1 = new User(null,"fabio","123");
-
-        userRepository.save(user1);
-        /*User user2 = new User(null,"maria","1234");
-        User user3 = new User(null,"clara","12345");
-        User user4 = new User(null,"joão","123456");
+        User user1 = new User(null,"fabio","123456");
+        User user2 = new User(null,"maria","123456");
+        User user3 = new User(null,"clara","123456");
+        User user4 = new User(null,"joão" ,"123456");
         User user5 = new User(null,"david","1234567");
         userRepository.saveAll(Arrays.asList(user1,user2,user3,user4,user5));
 
@@ -45,6 +46,5 @@ public class TestBase implements CommandLineRunner{
         user5.getEmails().add(email5);
         userRepository.saveAll(Arrays.asList(user1,user2,user3,user4,user5));
         
-        */
     }
 }

@@ -10,9 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-
-import org.hibernate.validator.constraints.Range;
-
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -24,10 +22,9 @@ public class EmailEntities implements Serializable {
     private String id;
     @Email
     @NotEmpty(message = "Email Required")
-    @Range(
-        min = 10, 
-        max = 100, 
-        message = "size exceeded maximum email size and 100 characters")
+    @Size(min = 5, 
+    	  max = 50, 
+    	  message = "invalid size email must be between 5 to 50 characters")
     private String email;
     private Boolean mainEmail;
 

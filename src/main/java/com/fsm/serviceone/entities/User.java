@@ -26,8 +26,11 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     @NotEmpty(message = "user name is required")
-    @Size(min = 2, max = 30)
+    @Size(min = 2, max = 30 , message = "invalid length Name must be between 2 to 30 characters")
     private String username;
+
+    @NotEmpty(message = "user password is required")
+    @Size(min = 6, max = 30, message = "password invalid!! length password must be between 2 to 30 characters ")
     private String password;
     @JsonIgnore
     @OneToMany(mappedBy = "user")

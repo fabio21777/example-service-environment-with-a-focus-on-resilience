@@ -1,5 +1,6 @@
 package com.fsm.serviceone.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.fsm.serviceone.entities.User;
@@ -16,5 +17,13 @@ public class UserService {
     public User findById(String id) {
         Optional<User> user = userRepository.findById(id);
         return user.get() ;
+    }
+    
+    public List<User>findAll(){
+    	return userRepository.findAll();
+    }
+    
+    public User insert(User user) {
+    	return userRepository.save(user);
     }
 }
