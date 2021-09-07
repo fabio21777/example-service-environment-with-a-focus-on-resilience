@@ -12,27 +12,37 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Setter;
 
+@Builder
+@Data
 @Entity
 @Table(name="tb_email")
 public class EmailEntities implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter(value = AccessLevel.NONE)
     private String id;
+    @Setter(value = AccessLevel.NONE)
     @Email
     @NotEmpty(message = "Email Required")
     @Size(min = 5, 
     	  max = 50, 
     	  message = "invalid size email must be between 5 to 50 characters")
     private String email;
+    @Setter(value = AccessLevel.NONE)
     private Boolean mainEmail;
-
+    
+    @Setter(value = AccessLevel.NONE)
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    public EmailEntities() {
+  /*  public EmailEntities() {
     }
 
     public EmailEntities(String id, String email, Boolean mainEmail, User user) {
@@ -86,5 +96,5 @@ public class EmailEntities implements Serializable {
         } else if (!email.equals(other.email))
             return false;
         return true;
-    }
+    }*/
 }

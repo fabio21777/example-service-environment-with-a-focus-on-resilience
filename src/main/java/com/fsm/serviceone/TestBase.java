@@ -1,16 +1,14 @@
 package com.fsm.serviceone;
 
-import java.util.Arrays;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 import com.fsm.serviceone.entities.EmailEntities;
 import com.fsm.serviceone.entities.User;
 import com.fsm.serviceone.repositories.EmailRepository;
 import com.fsm.serviceone.repositories.UserRepository;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
 @Configuration
 @Profile("test")
@@ -24,18 +22,51 @@ public class TestBase implements CommandLineRunner{
     @Override
     public void run(String... args) throws Exception {
 
-        User user1 = new User(null,"fabio","123456");
-        User user2 = new User(null,"maria","123456");
-        User user3 = new User(null,"clara","123456");
-        User user4 = new User(null,"joão" ,"123456");
-        User user5 = new User(null,"david","1234567");
-        userRepository.saveAll(Arrays.asList(user1,user2,user3,user4,user5));
+        User user1 = User.builder()
+        		.id(null)
+        		.username("fabio")
+        		.password("123456")
+        		.build();
+        
+        User user2 = User.builder()
+        		.id(null)
+        		.username("fabio")
+        		.password("123456")
+        		.build();
+        
+        User user3 = User.builder()
+        		.id(null)
+        		.username("fabio")
+        		.password("123456")
+        		.build();
+        
+        
+        User user4 = User.builder()
+        		.id(null)
+        		.username("fabio")
+        		.password("123456")
+        		.build();
+        
+        
+        User user5 = User.builder()
+        		.id(null)
+        		.username("fabio")
+        		.password("123456")
+        		.build();
+        userRepository.save(user1);
+        
+/*
+        userRepository.saveAll(Arrays.asList(user1,user2,user3,user4,user5));*/
 
-        EmailEntities email1 = new EmailEntities(null,"fabio@gmail.com",true,user1);
-        EmailEntities email2 = new EmailEntities(null,"maria@gmail.com",true,user2);
-        EmailEntities email3 = new EmailEntities(null,"clara@gmail.com",true,user3);
-        EmailEntities email4 = new EmailEntities(null,"lucas@gmail.com",true,user4);
-        EmailEntities email5 = new EmailEntities(null,"david@gmail.com",true,user5);
+        EmailEntities email1 = EmailEntities.builder()
+        					.id(null)
+        					.email("fabio@gmail.com")
+        					.mainEmail(true)
+        					.user(user1)
+        					.build();
+        emailRepository.save(email1);
+        
+       /*
 
         emailRepository.saveAll(Arrays.asList(email1,email2,email3,email4,email5));
 
@@ -45,6 +76,6 @@ public class TestBase implements CommandLineRunner{
         user4.getEmails().add(email4);
         user5.getEmails().add(email5);
         userRepository.saveAll(Arrays.asList(user1,user2,user3,user4,user5));
-        
+       */ 
     }
 }
