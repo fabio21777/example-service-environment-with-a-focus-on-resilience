@@ -1,5 +1,9 @@
 package com.fsm.serviceone;
 
+
+
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -24,58 +28,82 @@ public class TestBase implements CommandLineRunner{
 
         User user1 = User.builder()
         		.id(null)
-        		.username("fabio")
+        		.username("Fabio")
         		.password("123456")
         		.build();
         
         User user2 = User.builder()
         		.id(null)
-        		.username("fabio")
+        		.username("Maria")
         		.password("123456")
         		.build();
         
         User user3 = User.builder()
         		.id(null)
-        		.username("fabio")
+        		.username("David")
         		.password("123456")
         		.build();
         
         
         User user4 = User.builder()
         		.id(null)
-        		.username("fabio")
+        		.username("Andre")
         		.password("123456")
         		.build();
         
         
         User user5 = User.builder()
         		.id(null)
-        		.username("fabio")
+        		.username("Clara")
         		.password("123456")
         		.build();
-        userRepository.save(user1);
-        
-/*
-        userRepository.saveAll(Arrays.asList(user1,user2,user3,user4,user5));*/
+        userRepository.saveAll(Arrays.asList(user1,user2,user3,user4,user5));
+ 
 
         EmailEntities email1 = EmailEntities.builder()
         					.id(null)
-        					.email("fabio@gmail.com")
+        					.email("Fabio@gmail.com")
         					.mainEmail(true)
         					.user(user1)
         					.build();
-        emailRepository.save(email1);
+         EmailEntities email2 = EmailEntities.builder()
+ 							.id(null)
+ 							.email("Maria@gmail.com")
+ 							.mainEmail(true)
+ 							.user(user2)
+ 							.build();
+         EmailEntities email3 = EmailEntities.builder()
+ 							.id(null)
+ 							.email("David@gmail.com")
+ 							.mainEmail(true)
+ 							.user(user3)
+ 							.build();
+         EmailEntities email4 = EmailEntities.builder()
+ 							.id(null)
+ 							.email("Andre@gmail.com")
+ 							.mainEmail(true)
+ 							.user(user4)
+ 							.build();
+         EmailEntities email5 = EmailEntities.builder()
+ 							.id(null)
+ 							.email("Clara@gmail.com")
+ 							.mainEmail(true)
+ 							.user(user5)
+ 							.build();
+         
+         emailRepository.saveAll(Arrays.asList(email1,email2,email3,email4,email5));
         
-       /*
-
-        emailRepository.saveAll(Arrays.asList(email1,email2,email3,email4,email5));
-
+        
         user1.getEmails().add(email1);
+        userRepository.save(user1);
+        
+/*
+        
+
         user2.getEmails().add(email2);
         user3.getEmails().add(email3);
         user4.getEmails().add(email4);
         user5.getEmails().add(email5);
-        userRepository.saveAll(Arrays.asList(user1,user2,user3,user4,user5));
-       */ 
+        userRepository.saveAll(Arrays.asList(user1,user2,user3,user4,user5));*/
     }
 }
