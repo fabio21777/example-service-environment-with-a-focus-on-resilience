@@ -1,13 +1,13 @@
-package com.fsm.serviceone.services;
+package com.fsm.credentials.services;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.fsm.serviceone.entities.User;
-import com.fsm.serviceone.repositories.UserRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.fsm.credentials.entities.User;
+import com.fsm.credentials.repositories.UserRepository;
 
 @Service
 public class UserService {

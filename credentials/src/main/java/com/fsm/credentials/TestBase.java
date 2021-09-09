@@ -1,4 +1,4 @@
-package com.fsm.serviceone;
+package com.fsm.credentials;
 
 
 
@@ -9,10 +9,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import com.fsm.serviceone.entities.EmailEntities;
-import com.fsm.serviceone.entities.User;
-import com.fsm.serviceone.repositories.EmailRepository;
-import com.fsm.serviceone.repositories.UserRepository;
+import com.fsm.credentials.entities.EmailEntities;
+import com.fsm.credentials.entities.User;
+import com.fsm.credentials.repositories.EmailRepository;
+import com.fsm.credentials.repositories.UserRepository;
 
 @Configuration
 @Profile("test")
@@ -94,16 +94,16 @@ public class TestBase implements CommandLineRunner{
          emailRepository.saveAll(Arrays.asList(email1,email2,email3,email4,email5));
         
         
-        user1.getEmails().add(email1);
-        userRepository.save(user1);
-        
-/*
-        
 
+        
+		user1.getEmails().add(email1);
         user2.getEmails().add(email2);
         user3.getEmails().add(email3);
         user4.getEmails().add(email4);
         user5.getEmails().add(email5);
-        userRepository.saveAll(Arrays.asList(user1,user2,user3,user4,user5));*/
+        userRepository.saveAll(Arrays.asList(user1,user2,user3,user4,user5));
+        
+        
+
     }
 }

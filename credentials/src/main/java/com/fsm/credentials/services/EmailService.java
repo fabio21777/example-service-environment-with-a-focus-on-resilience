@@ -1,12 +1,12 @@
-package com.fsm.serviceone.services;
+package com.fsm.credentials.services;
 
 import java.util.Optional;
 
-import com.fsm.serviceone.entities.EmailEntities;
-import com.fsm.serviceone.repositories.EmailRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.fsm.credentials.entities.EmailEntities;
+import com.fsm.credentials.repositories.EmailRepository;
 
 @Service
 public class EmailService {

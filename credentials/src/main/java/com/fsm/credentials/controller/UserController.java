@@ -1,4 +1,4 @@
-package com.fsm.serviceone.controller;
+package com.fsm.credentials.controller;
 
 import java.net.URI;
 import java.util.List;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.fsm.serviceone.entities.User;
-import com.fsm.serviceone.services.UserService;
+import com.fsm.credentials.entities.User;
+import com.fsm.credentials.services.UserService;
 
 @RestController
 @RequestMapping(value = "/user")
@@ -32,7 +32,7 @@ public class UserController {
     @GetMapping
     public ResponseEntity<List<User>>findAll(){
     	List<User>list = userService.findAll();
-    	return ResponseEntity.ok(list);
+    	return ResponseEntity.ok().body(list);
     }
     @PostMapping
     public ResponseEntity<User> insert(@Valid @RequestBody User userBody){

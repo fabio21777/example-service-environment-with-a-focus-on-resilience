@@ -1,4 +1,4 @@
-package com.fsm.serviceone.controller.exception;
+package com.fsm.credentials.controller.exception;
 
 import java.io.Serializable;
 import java.time.Instant;
