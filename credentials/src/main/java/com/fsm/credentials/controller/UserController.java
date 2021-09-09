@@ -32,7 +32,7 @@ public class UserController {
     @GetMapping
     public ResponseEntity<List<User>>findAll(){
     	List<User>list = userService.findAll();
-    	return ResponseEntity.ok().body(list);
+    	return ResponseEntity.ok(list);
     }
     @PostMapping
     public ResponseEntity<User> insert(@Valid @RequestBody User userBody){
