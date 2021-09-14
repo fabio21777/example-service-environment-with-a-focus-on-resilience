@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,11 +32,13 @@ import lombok.ToString;
 @Entity
 @Table(name = "tb_Provider")
 public class Provider {
+	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 	private String name;
 	private String description;
+	@JsonIgnore
 	@Default
 	@ManyToMany(mappedBy = "providers")
 	private Set<Product> productsProvider = new HashSet<>();
