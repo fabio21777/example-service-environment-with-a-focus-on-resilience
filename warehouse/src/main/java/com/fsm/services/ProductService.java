@@ -20,8 +20,6 @@ public class ProductService {
 	
 	public DtoProduct findById(String id) {
 		Optional<Product> product = productRepository.findById(id);
-		
-		
 		return (DtoProduct.builder()
 				.id(product.get().getId())
 				.name(product.get().getName())
