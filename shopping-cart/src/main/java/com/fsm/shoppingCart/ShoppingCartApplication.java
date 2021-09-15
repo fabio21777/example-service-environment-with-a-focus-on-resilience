@@ -1,4 +1,4 @@
-package com.fsm.shoppingcart;
+package com.fsm.shoppingCart;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
