@@ -4,8 +4,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,21 +22,27 @@ import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-
+@Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-@Builder
+@Builder(toBuilder = true)
 @Entity
 @Table(name = "tb_cart")
 public class Cart {
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private String id;
 	@OneToOne(mappedBy = "cart")
 	private User user;
 	@Default
-	@OneToMany(mappedBy = "cart")
+	@ManyToMany
+	@JoinTable(
+			name = "tb_cart_product", 
+			joinColumns = @JoinColumn(name = "cart_id"), 
+			inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private Set<Product> products = new HashSet<>();
 }

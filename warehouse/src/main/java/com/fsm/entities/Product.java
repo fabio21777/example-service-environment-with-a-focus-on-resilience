@@ -40,11 +40,16 @@ public class Product {
 	private Double price;
 	@Default
 	@ManyToMany
-	@JoinTable(name = "tb_product_category", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
+	@JoinTable(
+			name = "tb_product_category", 
+			joinColumns = @JoinColumn(name = "product_id"), 
+			inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private Set<Category> categories = new HashSet<>();
 	
 	@ManyToMany
-	@JoinTable(name = "tb_product_providers", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "providers_id"))
+	@JoinTable(name = "tb_product_providers",
+				joinColumns = @JoinColumn(name = "product_id"),
+				inverseJoinColumns = @JoinColumn(name = "providers_id"))
 	@Default
 	private Set<Provider> providers = new HashSet<>();
 	
