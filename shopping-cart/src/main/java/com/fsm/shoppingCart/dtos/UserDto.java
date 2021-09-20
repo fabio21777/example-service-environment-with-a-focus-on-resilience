@@ -2,6 +2,7 @@ package com.fsm.shoppingCart.dtos;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fsm.shoppingCart.entities.Cart;
 import com.fsm.shoppingCart.externalEntities.User;
 
@@ -20,6 +21,7 @@ public class UserDto implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String id;
 	private String name;
+	@JsonIgnore
 	private CartDto cart;
 	
 	UserDto(User user){

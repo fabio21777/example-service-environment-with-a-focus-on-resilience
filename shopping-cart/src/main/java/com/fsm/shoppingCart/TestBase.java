@@ -1,13 +1,11 @@
 package com.fsm.shoppingCart;
 
 import java.util.Arrays;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Component;
 
 import com.fsm.shoppingCart.entities.Cart;
 import com.fsm.shoppingCart.externalEntities.Product;
@@ -85,28 +83,26 @@ public class TestBase implements CommandLineRunner{
     	cart1.setId(null);
     	cart1.setUser(user1);
     	cart1.getProducts().add(product1);
-    	
+    	cartRepositoty.save(cart1);
     	Cart cart2 = new  Cart();
-    	cart1.setId(null);
-    	cart1.setUser(user2);
-    	cart1.getProducts().add(product2);
-    	
+    	cart2.setId(null);
+    	cart2.setUser(user2);
+    	cart2.getProducts().add(product2);
+    	cartRepositoty.save(cart2);
     	Cart cart3 = new  Cart();
-    	cart1.setId(null);
-    	cart1.setUser(user3);
-    	cart1.getProducts().addAll(Arrays.asList(product1,product2,product3,product4));
-    	
+    	cart3.setId(null);
+    	cart3.setUser(user3);
+    	cart3.getProducts().addAll(Arrays.asList(product1,product2,product3,product4));
+    	cartRepositoty.save(cart3);
     	Cart cart4 = new  Cart();
-    	cart1.setId(null);
-    	cart1.setUser(user4);
-    	cart1.getProducts().add(product4);
-    	
+    	cart4.setId(null);
+    	cart4.setUser(user4);
+    	cart4.getProducts().add(product4);
+    	cartRepositoty.save(cart4);
     	Cart cart5 = new  Cart();
-    	cart1.setId(null);
-    	cart1.setUser(user5);
-    	cart1.getProducts().add(product5);
-    	
-    	cartRepositoty.saveAll(Arrays.asList(cart1,cart2,cart3,cart3,cart4,cart5));
-    	
+    	cart5.setId(null);
+    	cart5.setUser(user5);
+    	cart5.getProducts().add(product5);
+    	cartRepositoty.save(cart5);
     }
 }
