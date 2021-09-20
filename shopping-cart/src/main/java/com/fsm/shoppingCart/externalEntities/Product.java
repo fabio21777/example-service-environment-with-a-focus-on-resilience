@@ -35,6 +35,7 @@ public class Product {
 	private String id;
 	private String name;
 	private Double price;
+	private String UrlImg;
 	@ManyToMany(mappedBy = "products")
 	@Default
 	private Set<Cart>carts = new HashSet<>(); 
