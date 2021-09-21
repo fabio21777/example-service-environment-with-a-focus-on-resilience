@@ -1,5 +1,7 @@
 package com.fsm.showcase.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,5 +22,11 @@ public class ProductController {
 	public ResponseEntity<ProductDto> findById(@PathVariable String id){
 		ProductDto productDto = productService.findById(id);
 		return ResponseEntity.ok(productDto);
+	}
+	
+	
+	@GetMapping()
+	public ResponseEntity<List<ProductDto>>findAll(){
+		return ResponseEntity.ok(productService.findAll());
 	}
 }

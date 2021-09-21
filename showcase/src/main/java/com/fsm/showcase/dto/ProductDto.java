@@ -23,12 +23,5 @@ public class ProductDto  implements Serializable{
 	private Double price;
 	private String UrlImg;
 	
-	public ProductDto(Product product) {
-		this.id = product.getId();
-		this.name = product.getName();
-		this.description = product.getDescription();
-		this.price = product.getPrice();
-		this.UrlImg = product.getUrlImg();
 
-	}
 }
