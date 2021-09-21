@@ -43,7 +43,7 @@ public class Cart {
 	@JoinColumn(name = "user_id")
 	private User user;
 	@Default
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	@JoinTable(
 			name = "tb_cart_product", 
 			joinColumns = @JoinColumn(name = "cart_id"), 
