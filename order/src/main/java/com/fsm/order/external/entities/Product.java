@@ -3,7 +3,6 @@ package com.fsm.order.external.entities;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -28,7 +27,6 @@ public class Product {
 	private Double price;
 	private String UrlImg;
 	@JsonIgnore
-	@ManyToMany(mappedBy = "products")
 	@Default
 	private Set<Cart>carts = new HashSet<>(); 
 }
