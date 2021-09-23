@@ -3,7 +3,9 @@ package com.fsm.order.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,8 +14,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fsm.order.entities.enun.OrderStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -33,7 +33,7 @@ public class Order {
 	@GeneratedValue(strategy =GenerationType.IDENTITY )
 	@EqualsAndHashCode.Include
 	private Long id;
-	private OrderStatus orderStatus;
+	private Integer orderStatus;
 	@OneToOne
 	@JoinColumn(name = "tb_user")
 	private User user;

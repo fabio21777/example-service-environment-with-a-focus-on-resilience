@@ -15,7 +15,7 @@ import lombok.ToString;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Setter
 @ToString
-public class User {
+public class UserCart {
 	@EqualsAndHashCode.Include
 	private String id;
 	private String name;

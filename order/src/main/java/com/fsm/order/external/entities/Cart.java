@@ -18,7 +18,7 @@ import lombok.ToString;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Cart {
 	private String id;
-	private User user;
+	private UserCart user;
 	private Set<Product> products = new HashSet<>();
 }
 
