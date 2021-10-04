@@ -1,4 +1,4 @@
-package com.fsm.showcase.dto;
+package com.fsm.shoppingCart.externalEntities.showcase;
 
 import java.io.Serializable;
 
