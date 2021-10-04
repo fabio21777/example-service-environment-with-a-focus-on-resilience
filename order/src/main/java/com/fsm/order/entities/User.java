@@ -22,8 +22,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Setter
-@Entity
 @ToString
+@Entity
 @Table(name = "tb_user")
 public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,5 +33,11 @@ public class User {
 	private String name;
 	@OneToMany(mappedBy = "user")
 	private Set<Order> orders = new HashSet<>();
+	
+	public User(String id,String name ) {
+		this.id = id;
+		this.name = name;
+	}
+	
 }
 

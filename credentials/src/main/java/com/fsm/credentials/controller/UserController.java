@@ -19,7 +19,7 @@ import com.fsm.credentials.entities.User;
 import com.fsm.credentials.services.UserService;
 
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/users")
 public class UserController {
     @Autowired
     private UserService userService;

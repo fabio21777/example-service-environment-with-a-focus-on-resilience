@@ -3,9 +3,7 @@ package com.fsm.order.entities;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,7 +33,7 @@ public class Order {
 	private Long id;
 	private Integer orderStatus;
 	@OneToOne
-	@JoinColumn(name = "tb_user")
+	@JoinColumn(name = "id_user")
 	private User user;
 	@ManyToMany
 	@JoinTable(
@@ -43,4 +41,10 @@ public class Order {
 			joinColumns = @JoinColumn(name = "order_id"), 
 			inverseJoinColumns = @JoinColumn(name = "product_id"))
 	private Set<Product> products = new HashSet<>();
+	
+	public Order(Long id,Integer orderStatus,User user) {
+		this.id = id;
+		this.orderStatus = orderStatus;
+		this.user = user;
+	}
 }

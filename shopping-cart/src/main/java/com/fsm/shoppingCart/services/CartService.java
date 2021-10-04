@@ -29,7 +29,9 @@ public class CartService {
 	
 	@Transactional (readOnly = true)
 	public CartDto findById(String id) {
+		System.out.println("aqui é o cartFindById");
 		Optional<Cart>cartFindById = cartRepositoty.findById(id);
+		
 		User user = userRepositoty.getById(cartFindById.get().getUser().getId());
 		CartDto cartDto = new CartDto(cartFindById.get(),user);
 		for (Product productEntity : cartFindById.get().getProducts()) {

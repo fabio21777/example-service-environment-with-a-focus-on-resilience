@@ -30,7 +30,16 @@ public class Product {
 	private String id;
 	private String name;
 	private Double price;
-	private String UrlImg;
+	private String urlImg;
 	@ManyToMany(mappedBy = "products")
 	private Set<Order> orders = new HashSet<>();
+	
+	public Product (String id, String name,Double price, String urlImg ) {
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.urlImg = urlImg;
+	}
+	
+
 }

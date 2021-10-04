@@ -17,7 +17,7 @@ public class DtoUsers implements Serializable {
 	
 	
 	public DtoUsers(User user,EmailEntities emailEntities ) {
-		userName = user.getUsername();
+		userName = user.getUserName();
 		password = user.getPassword();
 		Email.add(emailEntities.getEmail()) ;
 	}

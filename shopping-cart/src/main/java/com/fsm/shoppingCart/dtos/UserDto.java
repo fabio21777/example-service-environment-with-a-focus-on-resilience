@@ -24,7 +24,7 @@ public class UserDto implements Serializable{
 	@JsonIgnore
 	private CartDto cart;
 	
-	UserDto(User user){
+	public UserDto(User user){
 		this.id = user.getId();
 		this.name = user.getName();
 	}

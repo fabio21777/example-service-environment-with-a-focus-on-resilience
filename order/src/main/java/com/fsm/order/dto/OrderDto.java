@@ -1,5 +1,6 @@
 package com.fsm.order.dto;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -17,7 +18,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderDto {
+public class OrderDto  implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private Integer orderStatus;
 	private UserDto user;

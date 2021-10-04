@@ -28,33 +28,33 @@ public class TestBase implements CommandLineRunner{
 
         User user1 = User.builder()
         		.id(null)
-        		.username("Fabio")
+        		.userName("Fabio")
         		.password("123456")
         		.build();
         
         User user2 = User.builder()
         		.id(null)
-        		.username("Maria")
+        		.userName("Maria")
         		.password("123456")
         		.build();
         
         User user3 = User.builder()
         		.id(null)
-        		.username("David")
+        		.userName("David")
         		.password("123456")
         		.build();
         
         
         User user4 = User.builder()
         		.id(null)
-        		.username("Andre")
+        		.userName("Andre")
         		.password("123456")
         		.build();
         
         
         User user5 = User.builder()
         		.id(null)
-        		.username("Clara")
+        		.userName("Clara")
         		.password("123456")
         		.build();
         userRepository.saveAll(Arrays.asList(user1,user2,user3,user4,user5));

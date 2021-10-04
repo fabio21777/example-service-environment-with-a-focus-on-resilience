@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fsm.shoppingCart.clientHttp.ClientHttpUser;
 import com.fsm.shoppingCart.dtos.CartDto;
+import com.fsm.shoppingCart.dtos.DtoUserInCreditialService;
 import com.fsm.shoppingCart.services.CartService;
 
 @RestController
@@ -15,10 +17,23 @@ import com.fsm.shoppingCart.services.CartService;
 public class CartController {
 	@Autowired 
 	CartService cartService;
+	
+	@Autowired
+	private ClientHttpUser clientHttpUser;
+	
+	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<CartDto> findById(@PathVariable String id){
 		CartDto cartDto = cartService.findById(id);
 		return ResponseEntity.ok(cartDto);
+	}
+	
+	
+	@GetMapping(value = "users/{id}")
+	public ResponseEntity<DtoUserInCreditialService>findUsersInCreditialService(@PathVariable String id){
+		DtoUserInCreditialService var = clientHttpUser.getUser(id);
+		System.out.println("aqui ta a chamanda no serviço"+var.getUserName());
+		return ResponseEntity.ok(var);
 	}
 	
 }
