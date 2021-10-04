@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.fsm.credentials.dto.DtoUser;
 import com.fsm.credentials.entities.User;
 import com.fsm.credentials.services.UserService;
 
@@ -25,8 +26,8 @@ public class UserController {
     private UserService userService;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<User> findById(@PathVariable String id) {
-        User user = userService.findById(id);
+    public ResponseEntity<DtoUser> findById(@PathVariable String id) {
+        DtoUser user = userService.findById(id);
         return ResponseEntity.ok().body(user);
     }
     @GetMapping
