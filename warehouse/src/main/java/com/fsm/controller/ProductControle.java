@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fsm.dto.DtoProduct;
+import com.fsm.externalEntities.order.OrderDto;
+import com.fsm.httpclient.OrderHttpClient;
 import com.fsm.services.ProductService;
 
 @RestController
@@ -17,6 +19,8 @@ import com.fsm.services.ProductService;
 public class ProductControle {
 	@Autowired
 	ProductService productService;
+	@Autowired
+	OrderHttpClient orderHttpClient;
 	
 	@GetMapping
 	public ResponseEntity<List<DtoProduct>> FindAll(){
@@ -26,6 +30,12 @@ public class ProductControle {
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<DtoProduct>findById(@PathVariable String id){
 		return  ResponseEntity.ok(productService.findById(id));
+	}
+	
+	@GetMapping(value = "orders/{id}")
+	public ResponseEntity<OrderDto>findOrderIdInOrderService(@PathVariable Long id){
+		OrderDto order = orderHttpClient.findByIdOrderInOrderService(id);
+		return ResponseEntity.ok(order);
 	}
 	
 

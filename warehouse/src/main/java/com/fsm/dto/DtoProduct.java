@@ -40,8 +40,6 @@ public class DtoProduct  implements Serializable{
 		this.name = product.getName();
 		this.description = product.getDescription();
 		this.price = product.getPrice();
-		this.categories = product.getCategories();
-		this.providers = product.getProviders();
 	}
 	
 	
