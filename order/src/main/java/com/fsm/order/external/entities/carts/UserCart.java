@@ -1,24 +1,23 @@
-package com.fsm.order.external.entities;
-
-import java.util.HashSet;
-import java.util.Set;
+package com.fsm.order.external.entities.carts;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString
-@Setter
+@Builder(toBuilder = true)
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Cart {
+@Setter
+@ToString
+public class UserCart {
+	@EqualsAndHashCode.Include
 	private String id;
-	private UserCart user;
-	private Set<Product> products = new HashSet<>();
+	private String name;
+	private Cart cart;
 }
-

@@ -1,4 +1,4 @@
-package com.fsm.order.external.entities;
+package com.fsm.order.external.entities.carts;
 
 import java.util.HashSet;
 import java.util.Set;

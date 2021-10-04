@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fsm.order.clientHttp.CartClientHttp;
+import com.fsm.order.clientHttp.CredentialClienteHttp;
 import com.fsm.order.dto.OrderDto;
-import com.fsm.order.external.entities.Cart;
+import com.fsm.order.external.entities.carts.Cart;
+import com.fsm.order.external.entities.credentials.DtoUser;
 import com.fsm.order.services.OrderService;
 
 @RestController
@@ -21,16 +23,24 @@ public class OrderController {
 	OrderService orderService;
 	@Autowired
 	CartClientHttp cartClientHttp;
+	@Autowired
+	CredentialClienteHttp credentialClienteHttp;
 	
 	@GetMapping(value = "carts/{id}")
-	public Cart findCartByIdInCartService(@PathVariable String id) throws ConnectException{
+	public ResponseEntity<Cart> findCartByIdInCartService(@PathVariable String id) throws ConnectException{
 		Cart cart = cartClientHttp.getCart(id);
-		return (cart);
+		return ResponseEntity.ok(cart);
 	}
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<OrderDto> findById(@PathVariable Long id){
 		OrderDto order = orderService.findById(id);
 		return ResponseEntity.ok(order);
+	}
+	
+	@GetMapping(value = "users/{id}")
+	public ResponseEntity<DtoUser> findUserByIdInCredentialsService(@PathVariable String id) throws ConnectException{
+		DtoUser user = credentialClienteHttp.getUser(id);
+		return ResponseEntity.ok(user);
 	}
 }
