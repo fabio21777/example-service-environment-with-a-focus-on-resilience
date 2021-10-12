@@ -11,10 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fsm.order.clientHttp.CartClientHttp;
 import com.fsm.order.clientHttp.CredentialClienteHttp;
+import com.fsm.order.controllers.exception.CallNotPermittedExceptionCircuit;
+import com.fsm.order.controllers.exception.StandardError;
 import com.fsm.order.dto.OrderDto;
 import com.fsm.order.external.entities.carts.Cart;
 import com.fsm.order.external.entities.credentials.DtoUser;
 import com.fsm.order.services.OrderService;
+
+import io.github.resilience4j.bulkhead.annotation.Bulkhead;
+import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 
 @RestController
 @RequestMapping(value = "/orders")
@@ -23,14 +29,21 @@ public class OrderController {
 	OrderService orderService;
 	@Autowired
 	CartClientHttp cartClientHttp;
+	
+	
 	@Autowired
 	CredentialClienteHttp credentialClienteHttp;
-	
+	@Bulkhead(name = "interfaceFindCartByIdInCartService"
+			,fallbackMethod = "fallbackFindCartByIdInCartServiceCircuit")
+	@CircuitBreaker(name = "interfaceFindCartByIdInCartService"
+			,fallbackMethod = "fallbackFindCartByIdInCartServiceBulkhead")
 	@GetMapping(value = "carts/{id}")
 	public ResponseEntity<Cart> findCartByIdInCartService(@PathVariable String id) throws ConnectException{
 		Cart cart = cartClientHttp.getCart(id);
 		return ResponseEntity.ok(cart);
 	}
+	
+	
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<OrderDto> findById(@PathVariable Long id){
@@ -43,4 +56,13 @@ public class OrderController {
 		DtoUser user = credentialClienteHttp.getUser(id);
 		return ResponseEntity.ok(user);
 	}
+	
+	private ResponseEntity<StandardError> fallbackFindCartByIdInCartServiceBulkhead(Exception e){
+		return null;
+	}
+	
+	private ResponseEntity<StandardError> fallbackFindCartByIdInCartServiceCircuit(CallNotPermittedException e){
+		throw new CallNotPermittedExceptionCircuit("fallbackFindCartByIdInCartServiceCircuit");
+	}
+	
 }

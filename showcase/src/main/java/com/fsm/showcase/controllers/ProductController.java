@@ -14,6 +14,9 @@ import com.fsm.showcase.externalEntities.DtoProduct;
 import com.fsm.showcase.httpClient.WereHouseHttpClient;
 import com.fsm.showcase.services.ProductService;
 
+import io.github.resilience4j.bulkhead.annotation.Bulkhead;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+
 @RestController
 @RequestMapping(value = "/products")
 public class ProductController {
@@ -33,6 +36,9 @@ public class ProductController {
 	public ResponseEntity<List<ProductDto>>findAll(){
 		return ResponseEntity.ok(productService.findAll());
 	}
+	
+	@Bulkhead(name = "default")
+	@CircuitBreaker(name = "default")
 	@GetMapping(value = "/werehouse/products/{id}")
 	public ResponseEntity<DtoProduct>findByIdInWereHouseEntityService(@PathVariable String id){
 		DtoProduct product = wereHouseHttpClient.getProduct(id);

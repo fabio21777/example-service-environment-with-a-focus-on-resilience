@@ -14,6 +14,9 @@ import com.fsm.externalEntities.order.OrderDto;
 import com.fsm.httpclient.OrderHttpClient;
 import com.fsm.services.ProductService;
 
+import io.github.resilience4j.bulkhead.annotation.Bulkhead;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+
 @RestController
 @RequestMapping (value = "/products")
 public class ProductControle {
@@ -31,7 +34,8 @@ public class ProductControle {
 	public ResponseEntity<DtoProduct>findById(@PathVariable String id){
 		return  ResponseEntity.ok(productService.findById(id));
 	}
-	
+	@Bulkhead(name = "default")
+	@CircuitBreaker(name = "default")
 	@GetMapping(value = "orders/{id}")
 	public ResponseEntity<OrderDto>findOrderIdInOrderService(@PathVariable Long id){
 		OrderDto order = orderHttpClient.findByIdOrderInOrderService(id);

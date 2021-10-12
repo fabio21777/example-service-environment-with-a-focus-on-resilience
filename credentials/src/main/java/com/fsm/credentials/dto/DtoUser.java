@@ -16,7 +16,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class DtoUser implements Serializable {
     private static final long serialVersionUID = 1L;
-	private String userName;
+	private String id;
+    private String userName;
 	private String password;
 	private HashSet<DtoEmail>emails = new HashSet<>();
 	
@@ -27,6 +28,7 @@ public class DtoUser implements Serializable {
 	}
 	
 	public DtoUser(User user) {
+		id = user.getId();
 		userName = user.getUserName();
 		password = user.getPassword();
 	}
