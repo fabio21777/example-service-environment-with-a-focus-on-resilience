@@ -1,4 +1,5 @@
 FROM openjdk
 WORKDIR /app
-COPY target/showcase-0.0.1-SNAPSHOT.jar /app/showcase.jar
-ENTRYPOINT [ "java", "-jar", "spring-app.jar" ]
+EXPOSE 6000
+COPY target/showcase-0.0.1-SNAPSHOT.jar /app/showcase-app.jar
+ENTRYPOINT [ "java", "-jar", "showcase-app.jar" ]

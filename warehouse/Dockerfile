@@ -1,4 +1,5 @@
 FROM openjdk
 WORKDIR /app
-COPY target/warehouse-0.0.1-SNAPSHOT.jar /app/warehouse.jar
-ENTRYPOINT [ "java", "-jar", "spring-app.jar" ]
+EXPOSE 5000
+COPY target/warehouse-0.0.1-SNAPSHOT.jar /app/warehouse-app.jar
+ENTRYPOINT [ "java", "-jar", "warehouse-app.jar" ]
