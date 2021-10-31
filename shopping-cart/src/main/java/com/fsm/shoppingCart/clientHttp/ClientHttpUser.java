@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.fsm.shoppingCart.dtos.DtoUserInCreditialService;
 
-@FeignClient(name = "user-service", url = "localhost:8000")
+@FeignClient(name = "user-service", url = "https://credentials-tr.herokuapp.com")
 public interface ClientHttpUser{
 	
 	@GetMapping(value = "/users/{id}")

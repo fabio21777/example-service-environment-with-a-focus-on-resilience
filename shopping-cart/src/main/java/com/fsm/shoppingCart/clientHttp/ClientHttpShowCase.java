@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.fsm.shoppingCart.externalEntities.showcase.ProductDto;
 
-@FeignClient(name = "showCase-service", url = "localhost:6000")
+@FeignClient(name = "showCase-service", url = "https://showcase-tr.herokuapp.com")
 public interface ClientHttpShowCase{
 	
 	@GetMapping(value = "/products/{id}")
