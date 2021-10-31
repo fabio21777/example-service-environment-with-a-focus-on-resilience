@@ -3,8 +3,7 @@ server:
 spring:
   profiles:
     active: "test"
-    
-    
+  
 resilience4j.circuitbreaker:
     instances:
         interfaceFindCartByIdInCartService:
