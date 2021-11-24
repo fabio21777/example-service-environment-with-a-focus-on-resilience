@@ -1,0 +1,7 @@
+sudo hping3 -i u20 -S -p 7000 -c 50000 35.198.10.134:7000/orders/carts/1
+ab -k -c 100 -n 20000 -g  35.198.10.134:7000/orders/carts/1
+ab -k -c 100 -n 20000   35.198.30.209:7000/orders/carts/1
+
+
+ab -n 1000 -c 10 -k -H "Accept-Encoding: gzip, deflate" 35.198.10.134:7000/orders/carts/1
+ab -n 1000 -c 10 -k -H "Accept-Encoding: gzip, deflate" 35.198.30.209:7000/orders/carts/1

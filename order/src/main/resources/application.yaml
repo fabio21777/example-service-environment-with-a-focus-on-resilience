@@ -1,19 +1,24 @@
-server:
-  port: 7000
 spring:
   profiles:
     active: "test"
-  
+server:
+  port: 7000
 resilience4j.circuitbreaker:
     instances:
         interfaceFindCartByIdInCartService:
-            permittedNumberOfCallsInHalfOpenState: 3
+            permittedNumberOfCallsInHalfOpenState: 2
             minimumNumberOfCalls: 10
-            waitDurationInOpenState: 50s
+            waitDurationInOpenState: 120s
             failureRateThreshold: 70
+            slowCallRateThreshold: 70
+            slowCallDurationThreshold: 2s
 
 resilience4j.bulkhead:
     instances:
         interfaceFindCartByIdInCartService:
-            maxWaitDuration: 10ms
-            maxConcurrentCalls: 10
+            maxWaitDuration: 10s
+            maxConcurrentCalls: 3
+feign:
+    client:
+        config.default.connectTimeout: 3000
+        config.default.readTimeout: 3000

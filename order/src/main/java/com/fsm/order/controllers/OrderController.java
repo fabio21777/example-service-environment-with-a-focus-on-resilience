@@ -33,10 +33,8 @@ public class OrderController {
 	
 	@Autowired
 	CredentialClienteHttp credentialClienteHttp;
-	@Bulkhead(name = "interfaceFindCartByIdInCartService"
-			,fallbackMethod = "fallbackFindCartByIdInCartServiceCircuit")
-	@CircuitBreaker(name = "interfaceFindCartByIdInCartService"
-			,fallbackMethod = "fallbackFindCartByIdInCartServiceBulkhead")
+	@Bulkhead(name = "interfaceFindCartByIdInCartService")
+	@CircuitBreaker(name = "interfaceFindCartByIdInCartService")
 	@GetMapping(value = "carts/{id}")
 	public ResponseEntity<Cart> findCartByIdInCartService(@PathVariable String id) throws ConnectException{
 		Cart cart = cartClientHttp.getCart(id);

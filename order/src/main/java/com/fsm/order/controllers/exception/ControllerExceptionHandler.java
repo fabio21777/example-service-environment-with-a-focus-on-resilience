@@ -1,6 +1,7 @@
 package com.fsm.order.controllers.exception;
 
 import java.net.ConnectException;
+import java.net.SocketTimeoutException;
 import java.time.Instant;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +34,17 @@ public class ControllerExceptionHandler {
 		error.setStatus(status.value());
 		error.setMessage(e.getMessage());
 		error.setError("callNotPermittedException, service is unavailable and CircuitBreaker is in open state");
+		error.setPath(request.getRequestURI());
+		return ResponseEntity.status(status).body(error);
+	}
+	@ExceptionHandler(SocketTimeoutException.class)
+	public ResponseEntity<StandardError>callNotSocketTimeoutException(SocketTimeoutException e,HttpServletRequest request){
+		HttpStatus 	status = HttpStatus.SERVICE_UNAVAILABLE;
+		StandardError error = new StandardError();
+		error.setTimestamp(Instant.now());
+		error.setStatus(status.value());
+		error.setMessage(e.getMessage());
+		error.setError("não foi possivel fazer processamento da requisição");
 		error.setPath(request.getRequestURI());
 		return ResponseEntity.status(status).body(error);
 	}
