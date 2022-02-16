@@ -1,0 +1,67 @@
+version: '3.7'
+services:
+    order-service:
+        container_name: order-service-nr
+        image: fabio21777/example-service-environment-with-a-focus-on-resilience-order:nr
+        network_mode: host
+        deploy:
+          resources:
+            limits:
+                cpus: "0.3"
+                memory: 512M
+        ports:
+          - 7000:7000
+
+    credential-service:
+        container_name: credential-service-nr
+        image: fabio21777/example-service-environment-with-a-focus-on-resilience-credentials:nr
+        network_mode: host
+        deploy:
+          resources:
+            limits:
+                cpus: "0.1"
+                memory: 512M
+        ports:
+          - 8000:8000
+
+    cart-service:
+        container_name: cart-service-nr
+        image: fabio21777/example-service-environment-with-a-focus-on-resilience-shopping-cart:nr
+        network_mode: host
+        deploy:
+          resources:
+            limits:
+                cpus: "0.1"
+                memory: 512M
+        ports:
+          - 9000:9000
+
+    show-case-service:
+        container_name: show-case-service-nr
+        image: fabio21777/example-service-environment-with-a-focus-on-resilience-showcase:nr
+        network_mode: host
+        deploy:
+          resources:
+            limits:
+                cpus: "0.1"
+                memory: 512M
+        ports:
+          - 6010:6010
+
+
+
+    ware-house-service:
+        container_name: ware-house-service-nr
+        image: fabio21777/example-service-environment-with-a-focus-on-resilience-warehouse:nr
+        network_mode: host
+        deploy:
+          resources:
+            limits:
+                cpus: "0.1"
+                memory: 512M
+        ports:
+          - 5000:5000
+
+
+    
+

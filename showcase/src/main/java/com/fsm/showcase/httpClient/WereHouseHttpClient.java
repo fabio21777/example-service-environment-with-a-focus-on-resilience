@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.fsm.showcase.externalEntities.DtoProduct;
 
 
-@FeignClient(name = "WereHouse-Service", url = "http://34.125.94.242:5000" )
+@FeignClient(name = "WereHouse-Service", url = "http://localhost:5000" )
 public interface WereHouseHttpClient {
 	@GetMapping(value = "/products/{id}" )
 	public DtoProduct getProduct(@PathVariable("id") String id);

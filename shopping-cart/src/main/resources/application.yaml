@@ -3,18 +3,21 @@ server:
 spring:
   profiles:
     active: "test"
-    
-    
-resilience4j.circuitbreaker:
+      
+resilience4j:
+  bulkhead:
+   instances:
+      bulkheadService1:
+        maxWaitDuration: 0
+        maxConcurrentCalls: 1
+  thread-pool-bulkhead:
     instances:
-        default:
-            permittedNumberOfCallsInHalfOpenState: 3
-            minimumNumberOfCalls: 10
-            waitDurationInOpenState: 50s
-            failureRateThreshold: 70
+      bulkheadService1:
+        maxThreadPoolSize: 1
+        coreThreadPoolSize: 1
+        queueCapacity: 1
 
-resilience4j.bulkhead:
-    instances:
-        default:
-            maxWaitDuration: 10ms
-            maxConcurrentCalls: 10
+feign:
+  client:
+    config.default.connectTimeout: 4000
+    config.default.readTimeout: 4000

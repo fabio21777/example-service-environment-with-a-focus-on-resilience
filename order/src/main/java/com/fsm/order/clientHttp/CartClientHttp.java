@@ -9,7 +9,7 @@ import com.fsm.order.external.entities.carts.Cart;
 
 
 
-@FeignClient(name = "cart-service", url = "https://shopping-cart-tr.herokuapp.commmmmmm")
+@FeignClient(name = "cart-service", url = "http://localhost:9000")
 public interface CartClientHttp {
 	@GetMapping(value = "/carts/{id}" )
 	public Cart getCart(@PathVariable("id") String id);

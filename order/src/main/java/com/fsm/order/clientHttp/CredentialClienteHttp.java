@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.fsm.order.external.entities.credentials.DtoUser;
 
-@FeignClient(name = "credential-service", url = "http://34.125.254.171:8000")
+@FeignClient(name = "credential-service", url = "http://localhost:8000")
 public interface CredentialClienteHttp {
 	@GetMapping(value = "/users/{id}" )
 	public DtoUser getUser(@PathVariable("id") String id);

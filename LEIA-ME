@@ -1,0 +1,14 @@
+Esses arquivos são gerados automaticamente pelo jmeter.
+
+os teste foram submetido para execução utilizando os mesmo arquivos de configuração.
+mudando apenas o padrão de resiliencia.
+
+A  duas pasta uma contendo os teste de com resiliencia e ou sem (caso de teste 01).
+
+dentro da pasta resultado-não resilencia com tem os resultados dos testes dos endpoints.
+
+dentro de cada subpasta que representa um endpoint, existe um arquivo chamado index html.
+
+ao clicar nele é possivel visualizar os resultados dos testes em formato de graficos.
+
+para acessar os teste de resiliencia, basta ir na pasta resultados resiliencia.

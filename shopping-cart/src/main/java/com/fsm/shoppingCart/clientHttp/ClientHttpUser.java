@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.fsm.shoppingCart.dtos.DtoUserInCreditialService;
 
-@FeignClient(name = "credential-service", url = "http://34.125.254.171:8000")
+@FeignClient(name = "credential-service", url = "http://localhost:8000")
 public interface ClientHttpUser{
 	
 	@GetMapping(value = "/users/{id}")
